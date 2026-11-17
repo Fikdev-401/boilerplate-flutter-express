@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                Int      @id @default(autoincrement())
+  email             String   @unique
+  name              String?
+  password          String   // Mengikuti database lama kamu yang terbaca tadi
+  isVerified        Boolean  @default(true) // Tambahkan ini
+  verificationToken String?  // Tambahkan ini (tanda tanya artinya boleh null/optional)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Kalau ada model relation lama seperti forum, dll. di bawahnya, hapus saja jika tidak dipakai
+}
+
+model Userversi2 {
+  id                Int      @id @default(autoincrement())
+  email             String   @unique
+  name              String?
+  password          String   // Mengikuti database lama kamu yang terbaca tadi
+  isVerified        Boolean  @default(true) // Tambahkan ini
+  verificationToken String?  // Tambahkan ini (tanda tanya artinya boleh null/optional)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Kalau ada model relation lama seperti forum, dll. di bawahnya, hapus saja jika tidak dipakai
+}
