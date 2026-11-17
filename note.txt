@@ -1,0 +1,5 @@
+buat migrate pertama kali
+npx prisma migrate dev --name tambah_tabel_user
+
+buat migrate kedua dan seterusnya
+npx prisma migrate dev --name tambah_tabel_post
